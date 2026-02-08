@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fotogram</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="content">
+            <header class="header">
+        <img class="logo wrapper" src="./img/fotogram-logo.svg" alt="Fotogram Logo" />
+      </header>
+      <div class="wrapper">
+      <main>
+        <h1>Your personal photo album</h1>
+        <div class="gallery">
+          <img tabindex="0"
+            id="image1"
+            src="./img/1.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+             id="image2"
+            src="./img/2.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+             id="image3"
+            src="./img/3.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+             id="image4"
+            src="./img/4.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+             id="image5"
+            src="./img/5.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+             id="image6"
+            src="./img/6.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+            id="image7"
+            src="./img/7.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+            id="image8"
+            src="./img/8.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+            id="image9"
+            src="./img/9.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+            id="image10"
+            src="./img/10.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0"
+            id="image11"
+            src="./img/11.JPG"
+            alt=""
+            class="photoPreview"
+          />
+          <img tabindex="0" 
+            id="image12"
+            src="./img/12.JPG"
+            alt=""
+            class="photoPreview"
+          />
+         </div>
+        </div>
+        <div class="center">
+        <dialog class="dialog" id="dialogPopUp">
+          <header class="dialogHeader">
+            <h2 class="dialogHeaderTitle" id="dialogTitle">
+              Hier kommt noch etwas
+            </h2>
+            <button type="button" onclick="closeDialog()"  class="closeButton"></button>
+          </header>
+           <div class="dialogImage" id="dialogImage"></div>
+          <footer class="dialogFooter">
+            <button onclick="previousImage()" class="navButton arrowBack" id="backwards"></button>
+            <p class="indexFooter" id="imageIndex"></p>
+            <button onclick=" nextImage()" class="navButton arrowFor" id="forwards"></button>
+          </footer>
+        </dialog>
+        </div>
+      </main>
+            <footer class="footer">
+        <div class="wrapper">
+        <figure class="figureFooter">
+          <img
+            class="footer-img"
+            src="./img/da-logo.svg"
+            alt="Developer Akdemie Logo"
+          />
+          <figcaption class="footer-figcaption">
+            © 2023 Developer Akademie GmbH
+          </figcaption>
+        </figure>
+        </div>
+      </footer>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>
