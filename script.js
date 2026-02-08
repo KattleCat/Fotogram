@@ -4,6 +4,7 @@ const images = document.getElementsByClassName("photoPreview");
 let currentImgId = null;
 
 document.addEventListener("click", (e) => {
+  console.log('"closeDialog"');
   if (dialogRef.open && !e.composedPath().includes(dialogRef)) {
     closeDialog();
     console.log('"closed"');
@@ -35,6 +36,7 @@ window.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
     console.log("hier");
     showFullDialog(currentImgId);
+    // event.stopPropagation();
   }
 });
 
