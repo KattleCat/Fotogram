@@ -175,6 +175,10 @@ dialog[open] {
   background-image: url("./img/button-forwards.svg");
 }
 
+dialog button:focus {
+  border: #ffffff 2px solid;
+}
+
 .indexFooter {
   font-size: 16px;
   min-width: 260px;

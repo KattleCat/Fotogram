@@ -4,7 +4,6 @@ const images = document.getElementsByClassName("photoPreview");
 let currentImgId = null;
 
 document.addEventListener("click", (e) => {
-  console.log('"closeDialog"');
   if (dialogRef.open && !e.composedPath().includes(dialogRef)) {
     closeDialog();
     console.log('"closed"');
@@ -13,14 +12,13 @@ document.addEventListener("click", (e) => {
 
 function openDialog() {
   dialogRef.showModal();
-  dialogRef.querySelector(".navButton.arrowFor").focus();
 }
 
 function closeDialog() {
   dialogRef.close();
 }
 
-window.addEventListener("keydown", function (event) {
+window.addEventListener("keyup", function (event) {
   if (event.defaultPrevented) {
     return; // Do nothing if the event was already processed
   } else if (dialogRef.open) {
@@ -33,10 +31,11 @@ window.addEventListener("keydown", function (event) {
         break;
     }
   }
-  if (event.key == "Enter") {
-    console.log("hier");
+
+  if (event.key == "Enter" && !dialogRef.open) {
+    console.log(currentImgId);
     showFullDialog(currentImgId);
-    // event.stopPropagation();
+    console.log(currentImgId);
   }
 });
 
@@ -49,7 +48,9 @@ window.addEventListener("keydown", function (event) {
 
 document.querySelectorAll("img.photoPreview").forEach((img) => {
   img.addEventListener("focusin", (e) => {
+    console.log("Before Updating: ", currentImgId);
     currentImgId = img.id;
+    console.log("After Updating: ", currentImgId);
   });
 });
 
@@ -61,12 +62,16 @@ document.querySelectorAll("img.photoPreview").forEach((img) => {
 });
 
 function showFullDialog(imageID) {
+  console.log("Show image", imageID);
   const source = readImageSource(imageID);
   loadDialogImage(source);
   const imageName = getImageName(source);
   printDialogTitle(imageName);
+  console.log(imageName);
   const imageIndex = readImageIndex(imageID);
   printIndexOfImage(imageIndex);
+  console.log(imageIndex);
+
   openDialog();
 }
 
