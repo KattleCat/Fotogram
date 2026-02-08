@@ -18,7 +18,7 @@ function closeDialog() {
   dialogRef.close();
 }
 
-window.addEventListener("keyup", function (event) {
+window.addEventListener("keyup", (event) => {
   if (event.defaultPrevented) {
     return; // Do nothing if the event was already processed
   } else if (dialogRef.open) {
@@ -31,7 +31,6 @@ window.addEventListener("keyup", function (event) {
         break;
     }
   }
-
   if (event.key == "Enter" && !dialogRef.open) {
     console.log(currentImgId);
     showFullDialog(currentImgId);
@@ -39,6 +38,19 @@ window.addEventListener("keyup", function (event) {
   }
 });
 
+document.querySelector(".closeButton").addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    event.preventDefault();
+    return false;
+  }
+});
+
+document.querySelector(".closeButton").addEventListener("keyup", (event) => {
+  event.stopPropagation();
+  if (event.key == "Enter" && dialogRef.open) {
+    closeDialog();
+  }
+});
 // function openWhenFocus(imgID) {
 //   let currentImg = document.getElementById(imgID);
 //   if (currentImg.hasFocus) {
