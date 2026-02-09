@@ -1,14 +1,87 @@
 const dialogRef = document.getElementById("dialogPopUp");
 const prefixID = "image";
-const images = document.getElementsByClassName("photoPreview");
+const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 let currentImgId = null;
 
-document.addEventListener("click", (e) => {
-  if (dialogRef.open && !e.composedPath().includes(dialogRef)) {
-    closeDialog();
-    console.log('"closed"');
+window.onload = (event) => {
+  render();
+  addEventHandler();
+};
+
+function render() {
+  let imagePreview = document.getElementById("imageGallery");
+  for (let i = 0; i < images.length; i++) {
+    imagePreview.innerHTML += getImageHtml(i);
   }
-});
+}
+
+function getImageHtml(index) {
+  return ` <img tabindex="0"
+            id="${prefixID + (index + 1)}"
+            src="./img/${images[index]}.JPG"
+            alt=""
+            class="photoPreview"
+          />`;
+}
+
+function addEventHandler() {
+  document.addEventListener("click", (e) => {
+    if (dialogRef.open && !e.composedPath().includes(dialogRef)) {
+      closeDialog();
+      console.log('"closed"');
+    }
+  });
+  dialogRef.addEventListener("keyup", (event) => {
+    if (event.defaultPrevented) {
+      return; // Do nothing if the event was already processed
+    } else if (dialogRef.open) {
+      switch (event.key) {
+        case "ArrowRight":
+          nextImage();
+          break;
+        case "ArrowLeft":
+          previousImage();
+          break;
+      }
+    }
+  });
+  document.querySelector(".gallery").addEventListener("keyup", (event) => {
+    if (event.key == "Enter" && !dialogRef.open) {
+      console.log(currentImgId);
+      showFullDialog(currentImgId);
+      console.log(currentImgId);
+    }
+  });
+  document
+    .querySelector(".closeButton")
+    .addEventListener("keydown", (event) => {
+      if (event.key == "Enter") {
+        event.preventDefault();
+        return false;
+      }
+    });
+  document.querySelector(".closeButton").addEventListener("keyup", (event) => {
+    if (event.key == "Enter" && dialogRef.open) {
+      event.stopPropagation();
+      closeDialog();
+    }
+  });
+  document.querySelectorAll("img.photoPreview").forEach((img) => {
+    //Anpassung notwendig -> auf array zugreifen
+    img.addEventListener("focusin", (e) => {
+      console.log("Before Updating: ", currentImgId);
+      currentImgId = img.id;
+      console.log("After Updating: ", currentImgId);
+    });
+  });
+  document.querySelectorAll("img.photoPreview").forEach((img) => {
+    //Anpassung notwendig -> auf array zugreifen
+    img.addEventListener("click", (e) => {
+      showFullDialog(img.id);
+      e.stopPropagation();
+    });
+  });
+}
 
 function openDialog() {
   dialogRef.showModal();
@@ -17,58 +90,6 @@ function openDialog() {
 function closeDialog() {
   dialogRef.close();
 }
-
-dialogRef.addEventListener("keyup", (event) => {
-  if (event.defaultPrevented) {
-    return; // Do nothing if the event was already processed
-  } else if (dialogRef.open) {
-    switch (event.key) {
-      case "ArrowRight":
-        nextImage();
-        break;
-      case "ArrowLeft":
-        previousImage();
-        break;
-    }
-  }
-});
-
-document.querySelector(".gallery").addEventListener("keyup", (event) => {
-  if (event.key == "Enter" && !dialogRef.open) {
-    console.log(currentImgId);
-    showFullDialog(currentImgId);
-    console.log(currentImgId);
-  }
-});
-
-document.querySelector(".closeButton").addEventListener("keydown", (event) => {
-  if (event.key == "Enter") {
-    event.preventDefault();
-    return false;
-  }
-});
-
-document.querySelector(".closeButton").addEventListener("keyup", (event) => {
-  if (event.key == "Enter" && dialogRef.open) {
-    event.stopPropagation();
-    closeDialog();
-  }
-});
-
-document.querySelectorAll("img.photoPreview").forEach((img) => {
-  img.addEventListener("focusin", (e) => {
-    console.log("Before Updating: ", currentImgId);
-    currentImgId = img.id;
-    console.log("After Updating: ", currentImgId);
-  });
-});
-
-document.querySelectorAll("img.photoPreview").forEach((img) => {
-  img.addEventListener("click", (e) => {
-    showFullDialog(img.id);
-    e.stopPropagation();
-  });
-});
 
 function showFullDialog(imageID) {
   console.log("Show image", imageID);
@@ -80,7 +101,6 @@ function showFullDialog(imageID) {
   const imageIndex = readImageIndex(imageID);
   printIndexOfImage(imageIndex);
   console.log(imageIndex);
-
   openDialog();
 }
 
