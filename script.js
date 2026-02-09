@@ -1,6 +1,19 @@
 const dialogRef = document.getElementById("dialogPopUp");
 const prefixID = "image";
-const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const images = [
+  "Boot_im_Wasser",
+  "Dorfkiche_Seeburg_bei_Nacht",
+  "Dämmerung_in_Seeburg",
+  "Heuballen",
+  "Kürbisse",
+  "Morgengrauen",
+  "Nebel_im_Wald",
+  "Pilze_im_Wald",
+  "Seeburg",
+  "Sonnenaufgang",
+  "Sonnenuntergang",
+  "Winter_in_Seeburg",
+];
 let currentImgId = null;
 
 window.onload = (event) => {
@@ -11,14 +24,14 @@ window.onload = (event) => {
 function render() {
   let imagePreview = document.getElementById("imageGallery");
   for (let i = 0; i < images.length; i++) {
-    imagePreview.innerHTML += getImageHtml(i);
+    imagePreview.innerHTML += getNoteTemplate(i);
   }
 }
 
-function getImageHtml(index) {
+function getNoteTemplate(index) {
   return ` <img tabindex="0"
             id="${prefixID + (index + 1)}"
-            src="./img/${images[index]}.JPG"
+            src="./img-to-upload/${images[index]}.JPG"
             alt=""
             class="photoPreview"
           />`;

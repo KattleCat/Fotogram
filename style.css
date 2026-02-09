@@ -77,7 +77,7 @@ h1 {
 
 .footer {
   align-items: center;
-  background-image: url("./img/footer-bg.svg");
+  background-image: url("./img-website/footer-bg.svg");
   background-position: center;
   background-size: cover;
   height: 128px;
@@ -111,7 +111,7 @@ h1 {
   padding: 0;
 }
 .closeButton {
-  background-image: url("./img/close.svg");
+  background-image: url("./img-website/close.svg");
   height: 24px;
   width: 24px;
 }
@@ -153,11 +153,11 @@ dialog[open] {
 }
 
 .arrowBack {
-  background-image: url("./img/button-backwards.svg");
+  background-image: url("./img-website/button-backwards.svg");
 }
 
 .arrowFor {
-  background-image: url("./img/button-forwards.svg");
+  background-image: url("./img-website/button-forwards.svg");
 }
 
 dialog button:focus {
