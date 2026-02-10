@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
-
 body {
   margin: 0;
   background-color: #06171e;
@@ -202,5 +200,8 @@ dialog button:focus {
   }
   .closeButton {
     margin-left: auto;
+  }
+  .logo {
+    margin: auto;
   }
 }

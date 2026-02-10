@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fotogram</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/png" href="./img-website/fotogram-icon.svg">
+    <link rel="stylesheet" href="./fonts/font-figtree.css">
   </head>
   <body>
     <div class="content">
@@ -14,20 +16,20 @@
       <div class="wrapper">
       <main>
         <h1>Your personal photo album</h1>
-        <div id="imageGallery" class="gallery">
+        <div aria-label="Image gallery" role="tablist" id="imageGallery" class="gallery">
          </div>
         </div>
         <div class="center">
-        <dialog class="dialog" id="dialogPopUp">
-          <header class="dialogHeader">
+        <dialog class="dialog" id="dialogPopUp" aria-labelledby="dialogTitle">
+          <header aria-label="name of image" class="dialogHeader">
             <h2 class="dialogHeaderTitle" id="dialogTitle"></h2>
-            <button onclick="closeDialog()" class="closeButton"></button>
+            <button aria-label="close dialog button" onclick="closeDialog()" class="closeButton"></button>
           </header>
-           <div class="dialogImage" id="dialogImage"></div>
+           <div aria-label="dialog image" class="dialogImage" id="dialogImage"></div>
           <footer class="dialogFooter">
-            <button onclick="previousImage()" class="navButton arrowBack" id="backwards"></button>
+            <button aria-label="previous image button" onclick="previousImage()" class="navButton arrowBack" id="backwards"></button>
             <p class="indexFooter" id="imageIndex"></p>
-            <button onclick=" nextImage()" class="navButton arrowFor" id="forwards"></button>
+            <button aria-label="next image button" onclick=" nextImage()" class="navButton arrowFor" id="forwards"></button>
           </footer>
         </dialog>
         </div>

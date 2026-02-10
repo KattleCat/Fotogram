@@ -3,9 +3,9 @@ const prefixID = "image";
 const images = [
   "Boot_im_Wasser",
   "Dorfkiche_Seeburg_bei_Nacht",
-  "Dämmerung_in_Seeburg",
+  "Daemmerung_in_Seeburg",
   "Heuballen",
-  "Kürbisse",
+  "Kuerbisse",
   "Morgengrauen",
   "Nebel_im_Wald",
   "Pilze_im_Wald",
@@ -31,9 +31,10 @@ function render() {
 function getNoteTemplate(index) {
   return ` <img tabindex="0"
             id="${prefixID + (index + 1)}"
-            src="./img-to-upload/${images[index]}.JPG"
-            alt=""
+            src="./img-to-upload/${images[index]}.jpg"
+            alt="${images[index]}"
             class="photoPreview"
+            role="tab"
           />`;
 }
 
