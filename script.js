@@ -16,11 +16,6 @@ const images = [
   "Winter_in_Seeburg",
 ];
 
-window.onload = (event) => {
-  render();
-  addEventHandler();
-};
-
 function render() {
   let imagePreview = document.getElementById("imageGallery");
   for (let i = 0; i < images.length; i++) {
