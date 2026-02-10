@@ -41,7 +41,6 @@ function getNoteTemplate(index) {
 }
 
 function onHtmlClick(event) {
-  console.log(event.composedPath(), event.target);
   if (dialogRef.open && !event.composedPath().includes(dialogRef)) {
     closeDialog();
   }
