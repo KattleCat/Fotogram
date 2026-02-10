@@ -1,3 +1,4 @@
+let currentImgId = null;
 const dialogRef = document.getElementById("dialogPopUp");
 const prefixID = "image";
 const images = [
@@ -14,7 +15,6 @@ const images = [
   "Sonnenuntergang",
   "Winter_in_Seeburg",
 ];
-let currentImgId = null;
 
 window.onload = (event) => {
   render();
@@ -35,59 +35,53 @@ function getNoteTemplate(index) {
             alt="${images[index]}"
             class="photoPreview"
             role="tab"
+            onfocusin="focusInId('${prefixID + (index + 1)}')"
+            onclick="clickOnImage('${prefixID + (index + 1)}',event)"
           />`;
 }
 
-function addEventHandler() {
-  document.addEventListener("click", (e) => {
-    if (dialogRef.open && !e.composedPath().includes(dialogRef)) {
-      closeDialog();
-    }
-  });
-  dialogRef.addEventListener("keyup", (event) => {
-    if (event.defaultPrevented) {
-      return; // Do nothing if the event was already processed
-    } else if (dialogRef.open) {
-      switch (event.key) {
-        case "ArrowRight":
-          nextImage();
-          break;
-        case "ArrowLeft":
-          previousImage();
-          break;
-      }
-    }
-  });
-  document.querySelector(".gallery").addEventListener("keyup", (event) => {
-    if (event.key == "Enter" && !dialogRef.open) {
-      showFullDialog(currentImgId);
-    }
-  });
-  document
-    .querySelector(".closeButton")
-    .addEventListener("keydown", (event) => {
-      if (event.key == "Enter") {
-        event.preventDefault();
-        return false;
-      }
-    });
-  document.querySelector(".closeButton").addEventListener("keyup", (event) => {
-    if (event.key == "Enter" && dialogRef.open) {
-      event.stopPropagation();
-      closeDialog();
-    }
-  });
-  document.querySelectorAll("img.photoPreview").forEach((img) => {
-    img.addEventListener("focusin", (e) => {
-      currentImgId = img.id;
-    });
-  });
-  document.querySelectorAll("img.photoPreview").forEach((img) => {
-    img.addEventListener("click", (e) => {
-      showFullDialog(img.id);
-      e.stopPropagation();
-    });
-  });
+function onHtmlClick(event) {
+  console.log(event.composedPath(), event.target);
+  if (dialogRef.open && !event.composedPath().includes(dialogRef)) {
+    closeDialog();
+  }
+}
+
+function useArrowKeys(event) {
+  if (dialogRef.open && event.key == "ArrowRight") {
+    nextImage();
+  } else if (dialogRef.open && event.key == "ArrowLeft") {
+    previousImage();
+  }
+}
+
+function enterFullDialog(event) {
+  if (event.key == "Enter" && !dialogRef.open) {
+    showFullDialog(currentImgId);
+  }
+}
+
+function closeDialogBtn(event) {
+  if (event.key == "Enter") {
+    event.preventDefault();
+    return false;
+  }
+}
+
+function closeBtnStop(event) {
+  if (event.key == "Enter" && dialogRef.open) {
+    event.stopPropagation();
+    closeDialog();
+  }
+}
+
+function focusInId(imgId) {
+  currentImgId = imgId;
+}
+
+function clickOnImage(imgId, event) {
+  showFullDialog(imgId);
+  event.stopPropagation();
 }
 
 function openDialog() {
