@@ -1,3 +1,4 @@
+"use strict";
 const dialogRef = document.getElementById("dialogPopUp");
 const prefixID = "image";
 const images = [

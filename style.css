@@ -1,3 +1,4 @@
+/*for global styling*/
 body {
   margin: 0;
   background-color: #06171e;
@@ -23,7 +24,7 @@ body {
   grid-template-rows: auto 1fr auto;
   height: 100vh;
 }
-
+/*Display flex for all necessary elements*/
 .gallery,
 .footer,
 .figure,
@@ -32,6 +33,16 @@ body {
 .dialogFooter,
 .indexFooter {
   display: flex;
+}
+
+/*Styling homepage*/
+/*images*/
+h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 50px;
+  margin-top: 100px;
+  text-align: center;
 }
 
 .gallery {
@@ -54,6 +65,7 @@ body {
   cursor: pointer;
 }
 
+/*header*/
 .header {
   align-items: center;
   background-color: #09212a;
@@ -65,14 +77,7 @@ body {
   width: 215px;
 }
 
-h1 {
-  font-size: 56px;
-  font-weight: 800;
-  margin-bottom: 50px;
-  margin-top: 100px;
-  text-align: center;
-}
-
+/*footer*/
 .footer {
   align-items: center;
   background-image: url("./img-website/footer-bg.svg");
@@ -98,27 +103,7 @@ h1 {
   font-size: 13px;
 }
 
-.closeButton,
-.navButton {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  outline: inherit;
-  padding: 0;
-}
-.closeButton {
-  background-image: url("./img-website/close.svg");
-  height: 24px;
-  width: 24px;
-}
-
-.center {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
+/*dialog*/
 .dialog {
   background-color: #09212a;
   border-radius: 40px;
@@ -135,19 +120,49 @@ h1 {
   width: 80vw;
 }
 
-.dialog::backdrop {
-  background-color: #09212a;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 dialog[open] {
   display: flex;
+}
+
+.dialogHeader {
+  justify-content: space-between;
+  width: 100%;
 }
 
 .navButton {
   height: 60px;
   width: 60px;
+}
+
+.closeButton,
+.navButton {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  outline: inherit;
+  padding: 0;
+}
+
+.closeButton {
+  background-image: url("./img-website/close.svg");
+  height: 24px;
+  width: 24px;
+}
+
+.dialogImage {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 70%;
+  width: 100%;
+}
+
+.dialog::backdrop {
+  background-color: #09212a;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .arrowBack {
@@ -162,6 +177,7 @@ dialog button:focus {
   border: #ffffff 2px solid;
 }
 
+/*Dialog footer*/
 .indexFooter {
   font-size: 16px;
   justify-content: center;
@@ -171,19 +187,6 @@ dialog button:focus {
 .dialogFooter {
   align-items: center;
   justify-content: center;
-  width: 100%;
-}
-
-.dialogHeader {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.dialogImage {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 70%;
   width: 100%;
 }
 
