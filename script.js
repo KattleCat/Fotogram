@@ -1,4 +1,3 @@
-"use strict";
 const dialogRef = document.getElementById("dialogPopUp");
 const prefixID = "image";
 const images = [
@@ -43,7 +42,6 @@ function addEventHandler() {
   document.addEventListener("click", (e) => {
     if (dialogRef.open && !e.composedPath().includes(dialogRef)) {
       closeDialog();
-      console.log('"closed"');
     }
   });
   dialogRef.addEventListener("keyup", (event) => {
@@ -62,9 +60,7 @@ function addEventHandler() {
   });
   document.querySelector(".gallery").addEventListener("keyup", (event) => {
     if (event.key == "Enter" && !dialogRef.open) {
-      console.log(currentImgId);
       showFullDialog(currentImgId);
-      console.log(currentImgId);
     }
   });
   document
@@ -82,15 +78,11 @@ function addEventHandler() {
     }
   });
   document.querySelectorAll("img.photoPreview").forEach((img) => {
-    //Anpassung notwendig -> auf array zugreifen
     img.addEventListener("focusin", (e) => {
-      console.log("Before Updating: ", currentImgId);
       currentImgId = img.id;
-      console.log("After Updating: ", currentImgId);
     });
   });
   document.querySelectorAll("img.photoPreview").forEach((img) => {
-    //Anpassung notwendig -> auf array zugreifen
     img.addEventListener("click", (e) => {
       showFullDialog(img.id);
       e.stopPropagation();
@@ -107,15 +99,12 @@ function closeDialog() {
 }
 
 function showFullDialog(imageID) {
-  console.log("Show image", imageID);
   const source = readImageSource(imageID);
   loadDialogImage(source);
   const imageName = getImageName(source);
   printDialogTitle(imageName);
-  console.log(imageName);
   const imageIndex = readImageIndex(imageID);
   printIndexOfImage(imageIndex);
-  console.log(imageIndex);
   openDialog();
 }
 
