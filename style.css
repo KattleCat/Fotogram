@@ -16,8 +16,8 @@ body:has(dialog#dialogPopUp[open]) {
 }
 
 .wrapper {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  width: 100%;
   max-width: 1440px;
   padding-left: 10px;
   padding-right: 10px;
@@ -71,6 +71,7 @@ h1 {
 
 /*header*/
 .header {
+  justify-content: flex-start;
   align-items: center;
   background-color: #09212a;
   height: 80px;
@@ -78,7 +79,6 @@ h1 {
 
 .logo {
   margin-left: 50px;
-  width: 215px;
 }
 
 /*footer*/
